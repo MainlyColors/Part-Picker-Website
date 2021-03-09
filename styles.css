@@ -136,21 +136,16 @@ button {
   grid-area: nozzle_option_rfso_9;
 }
 
-.test3 {
-  text-transform: uppercase;
-  color: blue;
-}
-
 /*---------------parts list grid --------------------*/
 .parts_list_container {
   height: 33%;
-  width: 100vw;
+  width: 90vw;
   display: grid;
-  /* grid-template-columns: repeat(7, auto);
-  grid-template-rows: auto auto auto; */
+  grid-template-columns: 5% 20% 5% auto 5%; /*5 columns*/
+  grid-auto-rows: 15%;
   grid-template-areas:
-    'order part_number description paint'
-    'item item item item';
+    'item_order part_number qty description paint'
+    'item_1 item_2 item_3 item_4 item_5';
 
   column-gap: 10px;
   row-gap: 10px;
@@ -162,19 +157,58 @@ button {
   padding: 0px 100px;
 }
 
-.part_list {
-  list-style: none;
+.header_item_1,
+.header_item_2,
+.header_item_3,
+.header_item_4,
+.header_item_5 {
+  justify-self: center;
+  align-self: center;
+  font-size: 25px;
+  color: white;
 }
 
 .header_item_1 {
-  grid-area: order;
+  grid-area: item_order;
 }
 .header_item_2 {
   grid-area: part_number;
 }
 .header_item_3 {
-  grid-area: description;
+  grid-area: qty;
 }
 .header_item_4 {
+  grid-area: description;
+}
+
+.header_item_5 {
   grid-area: paint;
+}
+
+.item_1,
+.item_2,
+.item_3,
+.item_4,
+.item_5 {
+  justify-self: center;
+  align-self: center;
+  font-size: 18px;
+  color: black;
+}
+
+.item_1 {
+  grid-area: item_1;
+}
+
+.item_2 {
+  grid-area: item_2;
+}
+.item_3 {
+  grid-area: item_3;
+}
+.item_4 {
+  grid-area: item_4;
+}
+.item_5 {
+  grid-area: item_5;
 }
