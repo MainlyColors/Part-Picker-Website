@@ -142,10 +142,11 @@ button {
   width: 90vw;
   display: grid;
   grid-template-columns: 5% 20% 5% auto 5%; /*5 columns*/
-  grid-auto-rows: 15%;
+  grid-auto-rows: 10%;
   grid-template-areas:
     'item_order part_number qty description paint'
     'item_1 item_2 item_3 item_4 item_5';
+  grid-auto-flow: row;
 
   column-gap: 10px;
   row-gap: 10px;
@@ -155,6 +156,8 @@ button {
   justify-content: stretch;
   margin: 20px 0px;
   padding: 0px 100px;
+  border: 3px solid black;
+  background-color: gray;
 }
 
 .header_item_1,
@@ -185,30 +188,9 @@ button {
   grid-area: paint;
 }
 
-.item_1,
-.item_2,
-.item_3,
-.item_4,
-.item_5 {
+.items {
   justify-self: center;
   align-self: center;
   font-size: 18px;
   color: black;
-}
-
-.item_1 {
-  grid-area: item_1;
-}
-
-.item_2 {
-  grid-area: item_2;
-}
-.item_3 {
-  grid-area: item_3;
-}
-.item_4 {
-  grid-area: item_4;
-}
-.item_5 {
-  grid-area: item_5;
 }

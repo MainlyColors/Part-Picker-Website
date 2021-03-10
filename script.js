@@ -14,20 +14,22 @@ const nozzles = {
   random: 'hello',
 };
 
+let cnt = 0;
+
 function tableHTMLCreation() {
-  return `<div class = 'item_1'>1</div>
-  <div class = 'item_2'>704T10-08-TS</div>
-  <div class = 'item_3'>3</div>
-  <div class = 'item_4'>10" #150 FFSO Nozzle (8" CL)</div>
-  <div class = 'item_5'>ET</div>`;
+  return `<div class = 'items'>${(cnt += 1)}</div>
+  <div class = 'items'>704T10-08-TS</div>
+  <div class = 'items'>3</div>
+  <div class = 'items'>10" #150 FFSO Nozzle (8" CL)</div>
+  <div class = 'items'>ET</div>`;
 }
 
 for (const button of document.querySelectorAll('button')) {
   button.addEventListener('click', function () {
     const newhtml = tableHTMLCreation();
     document
-      .querySelector('.header_item_5')
-      .insertAdjacentHTML('afterend', newhtml);
+      .querySelector('.parts_list_container')
+      .insertAdjacentHTML('beforeend', newhtml);
   });
 }
 
