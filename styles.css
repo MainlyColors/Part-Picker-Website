@@ -11,7 +11,6 @@ Main Colors:
 
 */
 
-
 html {
   font-size: 62.5%; /*root font size is 16px, so this is 10px to use rem easier but accessiblity needs to be looked at because users can change their font size*/
 }
@@ -20,7 +19,6 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
 body {
@@ -30,7 +28,7 @@ body {
   align-items: center;
   flex-direction: column;
   /* background: linear-gradient(to top left, #28b487, #1e201e); */
-  background-color: #36454F;
+  background-color: #36454f;
 }
 
 /*---------------headers-------------*/
@@ -46,14 +44,18 @@ h1 {
   font-size: 5rem;
   width: 80%;
   padding: 3rem;
-  margin:10px 50px ;
+  margin: 10px 50px;
   text-align: center;
   /* background-color: #0378a6; */
-  border-bottom: 1rem solid #d9a404
+  border-bottom: 1rem solid #d9a404;
 }
 
 h2 {
   font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.5rem;
 }
 
 /*-------------------nav menu---------------*/
@@ -62,7 +64,7 @@ nav {
   display: none;
   width: 100%;
   height: 6rem;
-  background-color: #D9A404;
+  background-color: #d9a404;
   /* border-bottom: 0.5rem solid white; */
   /* border-right: 1rem solid white ; */
   /* box-shadow: 5px 10px #888888; */
@@ -72,14 +74,14 @@ nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height:100%;
+  height: 100%;
 }
 
 nav li {
   list-style: none;
   width: 10%;
   height: 80%;
-  background-color: #0378A6;
+  background-color: #0378a6;
   text-align: center;
   margin: auto 0;
   display: flex;
@@ -89,17 +91,54 @@ nav li {
 
 nav a {
   text-decoration: none;
-  font-size: 2rem; 
+  font-size: 2rem;
+}
+
+/*---------------checkbox --------------------*/
+
+input[type='checkbox'].inner_outer {
+  font-size: 2rem;
+  appearance: none;
+  width: 3.5em;
+  height: 1.5em;
+  background: #ddd;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox'].inner_outer:checked {
+  background: #0ebeff;
+}
+
+input[type='checkbox'].inner_outer:after {
+  position: absolute;
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  transform: scale(0.7);
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox'].inner_outer:checked:after {
+  left: calc(100% - 1.5em);
 }
 
 /*---------------Buttons grid --------------------*/
 .button_container {
-  height: 25rem;
+  min-height: 25rem;
   width: 100vw;
   display: grid;
   /* grid-template-columns: repeat(7, auto);
   grid-template-rows: auto auto auto; */
   grid-template-areas:
+    'options options options options options options options' /*7 columns*/
     'header_ffso header_ffso header_ffso . header_rfso header_rfso header_rfso' /*7 columns*/
     'nozzle_option_ffso_1 nozzle_option_ffso_2 nozzle_option_ffso_3 . nozzle_option_rfso_1 nozzle_option_rfso_2 nozzle_option_rfso_3' /*7 columns*/
     'nozzle_option_ffso_4 nozzle_option_ffso_5 nozzle_option_ffso_6 . nozzle_option_rfso_4 nozzle_option_rfso_5 nozzle_option_rfso_6' /*7 columns*/
@@ -110,8 +149,20 @@ nav a {
   /* display: flex;
   flex-direction: row; */
   /* align-items:center; */
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   padding: 0px 100px;
+}
+
+.checkbox_container {
+  grid-area: options;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30rem;
+}
+
+.checkbox_container p:first-child {
+  padding: 0 0.2rem;
 }
 
 .heading_ffso {
@@ -134,33 +185,32 @@ button {
   border-style: hidden;
   /* border-bottom: 4px solid white;
   border-right: 4px solid white; */
-  background-color: #0378A6;
+  background-color: #0378a6;
   box-shadow: 0px 4px white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #03658C;
+  background-color: #03658c;
   transition: all 0.5s;
 }
 button:focus::before,
 button:focus::after {
-  content: "✨";
+  content: '✨';
 }
 
 button:focus {
-  outline: none;  
-
+  outline: none;
 }
 
 button:active,
 button:visited {
-  background-color: #03658C;
+  background-color: #03658c;
   box-shadow: 0px 0px white;
   transition: all 1s;
 }
 
-.nozzle_ffso_button_1 {     
+.nozzle_ffso_button_1 {
   grid-area: nozzle_option_ffso_1;
 }
 
@@ -282,3 +332,63 @@ button:visited {
   font-size: 1.8rem;
   color: black;
 }
+
+/*---------------nozzle check box--------------------*/
+
+.int_ext_checkbox {
+  font-size: 2rem;
+  appearance: none;
+  width: 6rem;
+  height: 3rem;
+  background: #ddd;
+  position: relative;
+  cursor: pointer;
+}
+
+.int_ext_checkbox:checked {
+  background: #0ebeff;
+}
+
+.int_ext_checkbox::after {
+  position: absolute;
+  content: '';
+  width: 0.5rem;
+  height: 3rem;
+  left: 2rem;
+  background: #888;
+}
+/* ---------------checkbox --------------------
+
+input[type='checkbox'].inner_outer {
+  font-size: 2rem;
+  appearance: none;
+  width: 3.5em;
+  height: 1.5em;
+  background: #ddd;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox'].inner_outer:checked {
+  background: #0ebeff;
+}
+
+input[type='checkbox'].inner_outer:after {
+  position: absolute;
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+  transform: scale(0.7);
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='checkbox'].inner_outer:checked:after {
+  left: calc(100% - 1.5em);
+} */
