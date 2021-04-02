@@ -33,6 +33,10 @@ for (const button of document.querySelectorAll('button')) {
   });
 }
 
+const beforeCheckboxElement = document.querySelector(
+  '.int_ext_checkbox_container'
+).firstChild;
+console.log(beforeCheckboxElement);
 //document.body.append(document.createElement('textarea'));
 //https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
 

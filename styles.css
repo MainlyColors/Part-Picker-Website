@@ -6,19 +6,28 @@ Main Colors:
 #D9A404
 #BF7E04
 #733702
-
-
-
-*/
+/* 
+:root { don't know how this works, its from bulb toggle switch codepen
+minFontSize + (maxFontSize - minFontSize) * (100vw - minVWidth)/(maxVWidth - minVWidth)
+	font-size: calc(64px + (80 - 64) * (100vw - 320px)/(960 - 320));/*100 vw is 1920 for my computer*/
+/* } */
 
 html {
   font-size: 62.5%; /*root font size is 16px, so this is 10px to use rem easier but accessiblity needs to be looked at because users can change their font size*/
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Recursive', sans-serif;
+}
+
+:root {
+  --checkbox-width: 6rem;
+  --checkbox-height: 3rem;
 }
 
 body {
@@ -36,7 +45,7 @@ body {
 h1,
 h2,
 a {
-  font-family: sans-serif;
+  font-family: 'Recursive', sans-serif;
   color: white;
 }
 
@@ -95,7 +104,7 @@ nav a {
 }
 
 /*---------------checkbox --------------------*/
-
+/* 
 input[type='checkbox'].inner_outer {
   font-size: 2rem;
   appearance: none;
@@ -127,8 +136,8 @@ input[type='checkbox'].inner_outer:after {
 }
 
 input[type='checkbox'].inner_outer:checked:after {
-  left: calc(100% - 1.5em);
-}
+  left: calc(100% - 1.5em); */
+/* } */
 
 /*---------------Buttons grid --------------------*/
 .button_container {
@@ -138,7 +147,7 @@ input[type='checkbox'].inner_outer:checked:after {
   /* grid-template-columns: repeat(7, auto);
   grid-template-rows: auto auto auto; */
   grid-template-areas:
-    'options options options options options options options' /*7 columns*/
+    'options_1 options_1 options_1 options_spacer options_2 options_2 options_2' /*7 columns*/
     'header_ffso header_ffso header_ffso . header_rfso header_rfso header_rfso' /*7 columns*/
     'nozzle_option_ffso_1 nozzle_option_ffso_2 nozzle_option_ffso_3 . nozzle_option_rfso_1 nozzle_option_rfso_2 nozzle_option_rfso_3' /*7 columns*/
     'nozzle_option_ffso_4 nozzle_option_ffso_5 nozzle_option_ffso_6 . nozzle_option_rfso_4 nozzle_option_rfso_5 nozzle_option_rfso_6' /*7 columns*/
@@ -153,17 +162,17 @@ input[type='checkbox'].inner_outer:checked:after {
   padding: 0px 100px;
 }
 
-.checkbox_container {
+/* .checkbox_container {
   grid-area: options;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 30rem;
-}
+} */
 
-.checkbox_container p:first-child {
+/* .checkbox_container p:first-child {
   padding: 0 0.2rem;
-}
+} */
 
 .heading_ffso {
   grid-area: header_ffso;
@@ -335,38 +344,130 @@ button:visited {
 
 /*---------------nozzle check box--------------------*/
 
+.int_ext_checkbox_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: options_1;
+  margin-bottom: 1rem;
+  color: #888;
+}
+
+.toggle-on-JS {
+  color: yellow;
+  text-shadow: 1px 5px 10px chartreuse;
+}
+
+.int_ext_checkbox_container::before {
+  content: 'External';
+}
+
+.int_ext_checkbox_container::before,
+.int_ext_checkbox_container::after {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: inline-block;
+  width: 9rem;
+  /* height: 100%; */
+  text-align: center;
+  /* color: yellow; */
+  /* text-shadow: 1px 5px 10px chartreuse; */
+}
+
+.int_ext_checkbox_container::after {
+  content: 'Internal';
+}
+
 .int_ext_checkbox {
-  font-size: 2rem;
+  font-size: 0.5rem; /*driving the size of the class, before and after*/
   appearance: none;
-  width: 6rem;
-  height: 3rem;
+  width: 18em;
+  height: 9em;
   background: #ddd;
   position: relative;
   cursor: pointer;
+  /* transition: background-color 0.1s 0.3s ease-out; */
+  box-shadow: 0px 0px 3px 5px #ddd;
 }
 
-.int_ext_checkbox:checked {
-  background: #0ebeff;
+.int_ext_checkbox:focus {
+  outline: #000 solid 3px;
+}
+
+.int_ext_checkbox::before {
+  position: absolute;
+  content: '';
+  height: 8em;
+  width: 9em;
+  top: 0.35em;
+  border-left: 1.75em solid #000;
+  z-index: 1;
+  /* background-image: linear-gradient(
+      to right,
+      transparent 0.75rem,
+      transparent 0.75rem
+    ),
+    linear-gradient(45deg, blue 7rem, blue 7rem, transparent 7rem); */
+  /* margin-left: 0.5rem; */
+  transition: transform 0.45s ease-out;
 }
 
 .int_ext_checkbox::after {
   position: absolute;
   content: '';
-  width: 3rem;
-  height: 3rem;
-  /* left: 2rem; */
-  /* background: linear-gradient(#888 25%, #000), linear-gradient(red, blue); */
-  background-repeat: no-repeat, no-repeat;
-  background-image: linear-gradient(to right, transparent 2.5rem, #000 2.5rem),
-    linear-gradient(to right, #000 0.75rem, transparent 0.75rem),
-    linear-gradient(
-      to bottom,
-      transparent 0.5rem,
-      red 0.5rem,
-      red 2.5rem,
-      transparent 2.5rem
-    );
-  /* background-size: 100% 100%, 83.3% 100%, 83.3% 100%; */
+  width: 9em;
+  height: 9em;
+  /* border: 0.75rem solid red; */
+  /* border-left: 2.25rem solid #000; */
+  border-right: 1em solid #000;
+  /* background-repeat: no-repeat; */
+  background-image: linear-gradient(
+    to bottom,
+    transparent 1.5em,
+    #000 1.5em,
+    #000 2em,
+    #fff 4.5em,
+    #000 7.5em,
+    transparent 7.5em
+  );
+  transition: transform 0.45s ease-out;
+}
+
+.int_ext_checkbox:checked {
+  /* background: #0ebeff; */
+  /* transition: background-color 0.2s 0.3s ease-out; */
+}
+
+.int_ext_checkbox:checked::before {
+  content: '';
+  transform: translateX(100%) rotateY(180deg);
+}
+
+.int_ext_checkbox:checked::after {
+  content: '';
+  transform: translateX(100%) rotateY(180deg);
+}
+
+.test_box {
+  font-family: 'Recursive', sans-serif;
+  font-size: 3rem;
+  margin-top: 2rem;
+  background-color: #8b8b8b;
+  width: 12rem;
+  height: 6rem;
+  color: blue;
+}
+
+.test_box::before {
+  position: absolute;
+  content: '';
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 100% 100%;
+  background-position: 6rem 0rem, 0rem 0rem;
+  background-image: linear-gradient(to right, blue 50%, red 50%),
+    linear-gradient(to right, yellow 50%, green 50%);
+  width: 12rem;
+  height: 6rem;
 }
 /* #888 */
 
