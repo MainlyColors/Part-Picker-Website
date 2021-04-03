@@ -351,15 +351,19 @@ button:visited {
   grid-area: options_1;
   margin-bottom: 1rem;
   color: #888;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.int_ext_checkbox_container > p {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  transition: color 0.2s ease-out, text-shadow 0.2s easeOutBounce;
 }
 
 .toggle-on-JS {
   color: yellow;
   text-shadow: 1px 5px 10px chartreuse;
-}
-
-.int_ext_checkbox_container::before {
-  content: 'External';
 }
 
 .int_ext_checkbox_container::before,
@@ -372,10 +376,6 @@ button:visited {
   text-align: center;
   /* color: yellow; */
   /* text-shadow: 1px 5px 10px chartreuse; */
-}
-
-.int_ext_checkbox_container::after {
-  content: 'Internal';
 }
 
 .int_ext_checkbox {
@@ -433,10 +433,10 @@ button:visited {
   transition: transform 0.45s ease-out;
 }
 
-.int_ext_checkbox:checked {
-  /* background: #0ebeff; */
-  /* transition: background-color 0.2s 0.3s ease-out; */
-}
+/* .int_ext_checkbox:checked {
+  background: #0ebeff;
+  transition: background-color 0.2s 0.3s ease-out;
+} */
 
 .int_ext_checkbox:checked::before {
   content: '';
